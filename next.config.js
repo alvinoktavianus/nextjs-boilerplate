@@ -6,5 +6,15 @@ module.exports = {
     config.plugins.push(new webpack.EnvironmentPlugin(localEnv));
 
     return config;
-  }
+  },
+  exportPathMap: function () {
+    return {
+      '/': {
+        page: '/index'
+      },
+      'user': {
+        page: '/user'
+      },
+    }
+  },
 };
