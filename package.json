@@ -1,0 +1,19 @@
+{
+  "name": "nextjs-practice",
+  "version": "1.0.0",
+  "description": "Application for practicing nextjs",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alvin Oktavianus (agentsam1995@gmail.com)",
+  "license": "ISC",
+  "dependencies": {
+    "next": "^9.0.3",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}
