@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import getConfig from 'next/config';
 import Link from 'next/link';
 
 import CustomHeader from 'components/CustomHeader';
@@ -40,7 +41,8 @@ Index.propTypes = {
 };
 
 Index.getInitialProps = async function () {
-  const response = await axios.get(`${process.env.BACKEND_ENDPOINT}/api/users?per_page=10`);
+  const { publicRuntimeConfig: { BACKEND_ENDPOINT } } = getConfig();
+  const response = await axios.get(`${BACKEND_ENDPOINT}/api/users?per_page=10`);
 
   return {
     users: response.data.data,

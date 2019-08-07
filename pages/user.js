@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import getConfig from 'next/config';
 import axios from 'axios';
 
 class User extends React.Component {
@@ -24,7 +25,8 @@ User.propTypes = {
 };
 
 User.getInitialProps = async function ({ query }) {
-  const { data: { data } } = await axios.get(`${process.env.BACKEND_ENDPOINT}/api/users/${query.id}`);
+  const { publicRuntimeConfig: { BACKEND_ENDPOINT } } = getConfig();
+  const { data: { data } } = await axios.get(`${BACKEND_ENDPOINT}/api/users/${query.id}`);
 
   return {
     firstName: data.first_name,

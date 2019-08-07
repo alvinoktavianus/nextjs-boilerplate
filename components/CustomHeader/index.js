@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import styles from './styles.scss';
+
 const CustomHeader = ({ title, subtitle }) => (
   <React.Fragment>
-    <h1>{title}</h1>
+    <h1 className={styles.title}>{title}</h1>
     {subtitle && <h6>{subtitle}</h6>}
   </React.Fragment>
 );

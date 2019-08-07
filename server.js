@@ -1,9 +1,10 @@
+/* eslint-disable no-console */
 const express = require('express');
 const next = require('next');
 
 const serverPort = process.env.PORT || 3000;
 const dev = process.env.NODE_DEV !== 'production';
-const app = next({dev});
+const app = next({ dev });
 const handle = app.getRequestHandler();
 
 app
@@ -15,17 +16,15 @@ app
 
     server.get('/user/:id', (req, res) => {
       const actualPage = '/user';
-      const queryParams = {id: req.params.id};
+      const queryParams = { id: req.params.id };
       app.render(req, res, actualPage, queryParams);
     });
 
-    server.get('*', (req, res) => {
-      return handle(req, res);
-    });
+    server.get('*', (req, res) => handle(req, res));
 
-    server.listen(serverPort, err => {
+    server.listen(serverPort, (err) => {
       if (err) throw err;
-      console.log(`Ready at http://localhost:${serverPort}`)
+      console.log(`> Ready at http://localhost:${serverPort}`);
     });
   })
   .catch((ex) => {
