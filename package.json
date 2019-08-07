@@ -6,9 +6,8 @@
   "scripts": {
     "dev": "node server.js",
     "build": "rm -rf .next && next build",
-    "start": "next start",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "export": "next export"
+    "start": "NODE_ENV=production node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Alvin Oktavianus (agentsam1995@gmail.com)",
   "license": "ISC",
