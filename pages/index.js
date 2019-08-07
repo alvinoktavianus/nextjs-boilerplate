@@ -1,6 +1,8 @@
 import axios from 'axios'
 import Link from 'next/link'
 
+import CustomHeader from 'components/CustomHeader'
+
 class Index extends React.Component {
   renderUser(idx, user) {
     return <li key={idx}>
@@ -14,7 +16,10 @@ class Index extends React.Component {
     const {users} = this.props;
 
     return <React.Fragment>
-      <h1>{`List of users`}</h1>
+      <CustomHeader
+        title={"List of users"}
+        subtitle={"Showing list of users based from sample API"}
+      />
       <ol>
         {users.map((usr, idx) => this.renderUser(idx, usr))}
       </ol>
