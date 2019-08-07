@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import Link from 'next/link';
 
@@ -33,6 +34,10 @@ class Index extends React.Component {
 }
 
 export default Index;
+
+Index.propTypes = {
+  users: PropTypes.array.isRequired,
+};
 
 Index.getInitialProps = async function () {
   const response = await axios.get(`${process.env.BACKEND_ENDPOINT}/api/users?per_page=10`);

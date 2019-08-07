@@ -1,10 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const CustomHeader = props => (
+const CustomHeader = ({ title, subtitle }) => (
   <React.Fragment>
-    <h1>{props.title}</h1>
-    <h6>{props.subtitle}</h6>
+    <h1>{title}</h1>
+    {subtitle && <h6>{subtitle}</h6>}
   </React.Fragment>
 );
 
 export default CustomHeader;
+
+CustomHeader.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
+};
+
+CustomHeader.defaultProps = {
+  subtitle: null,
+};

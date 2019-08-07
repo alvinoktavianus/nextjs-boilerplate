@@ -1,14 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 
 class User extends React.Component {
   render() {
-    const { user } = this.props;
+    const { firstName, lastName, avatar } = this.props;
 
     return (
       <React.Fragment>
-        <h1>{`${user.first_name} ${user.last_name}`}</h1>
-        <img src={user.avatar} alt={`${user.first_name} ${user.last_name}`} />
+        <h1>{`${firstName} ${lastName}`}</h1>
+        <img src={avatar} alt={`${firstName} ${lastName}`} />
       </React.Fragment>
     );
   }
@@ -16,10 +17,18 @@ class User extends React.Component {
 
 export default User;
 
+User.propTypes = {
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
+};
+
 User.getInitialProps = async function ({ query }) {
-  const response = await axios.get(`${process.env.BACKEND_ENDPOINT}/api/users/${query.id}`);
+  const { data: { data } } = await axios.get(`${process.env.BACKEND_ENDPOINT}/api/users/${query.id}`);
 
   return {
-    user: response.data.data,
+    firstName: data.first_name,
+    lastName: data.last_name,
+    avatar: data.avatar,
   };
 };
