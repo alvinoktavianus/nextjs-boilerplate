@@ -1,11 +1,12 @@
 /* eslint-disable no-console */
 const express = require('express');
 const next = require('next');
+const routes = require('./routes');
 
-const serverPort = process.env.PORT || 3000;
+const serverPort = process.env.PORT || 3010;
 const dev = process.env.NODE_DEV !== 'production';
 const app = next({ dev });
-const handle = app.getRequestHandler();
+const handle = routes.getRequestHandler(app);
 
 app
   .prepare()
