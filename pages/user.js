@@ -1,19 +1,22 @@
-import axios from 'axios'
+import React from 'react';
+import axios from 'axios';
 
 class User extends React.Component {
   render() {
-    const {user} = this.props;
+    const { user } = this.props;
 
-    return <React.Fragment>
-      <h1>{`${user.first_name} ${user.last_name}`}</h1>
-      <img src={user.avatar} alt={`${user.first_name} ${user.last_name}`}/>
-    </React.Fragment>
+    return (
+      <React.Fragment>
+        <h1>{`${user.first_name} ${user.last_name}`}</h1>
+        <img src={user.avatar} alt={`${user.first_name} ${user.last_name}`} />
+      </React.Fragment>
+    );
   }
 }
 
-export default User
+export default User;
 
-User.getInitialProps = async function ({query}) {
+User.getInitialProps = async function ({ query }) {
   const response = await axios.get(`${process.env.BACKEND_ENDPOINT}/api/users/${query.id}`);
 
   return {
