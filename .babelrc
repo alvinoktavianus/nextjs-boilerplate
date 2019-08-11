@@ -1,19 +1,22 @@
 {
   "presets": [
-    "next/babel",
-    "airbnb"
+    "next/babel"
   ],
   "plugins": [
     [
       "module-resolver",
       {
         "root": [
-          "./"
+          "./src"
         ],
         "alias": {
-          "components": "./components",
-          "store": "./redux/store.js",
-          "pages": "./pages"
+          "@Actions": "./src/actions",
+          "@Components": "./src/components",
+          "@Reducers": "./src/reducers",
+          "@Redux": "./src/redux",
+          "@Constants": "./src/constants",
+          "@Sagas": "./src/sagas",
+          "@Http": "./src/http"
         }
       }
     ]

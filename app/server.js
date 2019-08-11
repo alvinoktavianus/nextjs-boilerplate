@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 const express = require('express');
 const next = require('next');
+const path = require('path');
 const routes = require('./routes');
 
 const serverPort = process.env.PORT || 3010;
@@ -12,14 +13,8 @@ app
   .prepare()
   .then(() => {
     const server = express();
-    // server.use(bodyParser.json());
-    // server.use(bodyParser.urlencoded({extended: true}));
-
-    server.get('/user/:id', (req, res) => {
-      const actualPage = '/user';
-      const queryParams = { id: req.params.id };
-      app.render(req, res, actualPage, queryParams);
-    });
+    app.setAssetPrefix(process.env.STATIC_PATH);
+    server.use(express.static(path.join(__dirname, '../static')));
 
     server.get('*', (req, res) => handle(req, res));
 

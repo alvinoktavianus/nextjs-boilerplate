@@ -2,11 +2,11 @@
   "name": "nextjs-practice",
   "version": "1.0.0",
   "description": "Application for practicing nextjs",
-  "main": "index.js",
+  "main": "app/server.js",
   "scripts": {
-    "dev": "node server.js",
-    "build": "rm -rf .next && next build",
-    "start": "NODE_ENV=production node server.js",
+    "dev": "rm -rf .next && nodemon --watch app --watch app/server.js",
+    "build": "rm -rf .next && cross-env NODE_ENV=production next build",
+    "start": "cross-env NODE_ENV=production node ./app/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Alvin Oktavianus (agentsam1995@gmail.com)",
@@ -36,12 +36,14 @@
     "autoprefixer": "^9.6.1",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-preset-airbnb": "^4.0.1",
+    "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",
     "eslint": "^6.1.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-import-resolver-babel-module": "^5.1.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.14.3"
+    "eslint-plugin-react": "^7.14.3",
+    "nodemon": "^1.19.1"
   }
 }

@@ -4,7 +4,7 @@ const withBundleAnalyzer = require('@zeit/next-bundle-analyzer');
 const nextRuntimeDotenv = require('next-runtime-dotenv');
 
 const withConfig = nextRuntimeDotenv({
-  public: ['BACKEND_ENDPOINT', 'PORT'],
+  server: ['BACKEND_ENDPOINT', 'PORT'],
 });
 
 module.exports = withConfig(
