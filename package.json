@@ -35,7 +35,6 @@
   "devDependencies": {
     "autoprefixer": "^9.6.1",
     "babel-plugin-module-resolver": "^3.2.0",
-    "babel-preset-airbnb": "^4.0.1",
     "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",
     "eslint": "^6.1.0",

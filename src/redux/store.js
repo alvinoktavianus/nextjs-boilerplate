@@ -26,6 +26,7 @@ function configureStore(initialState) {
     composeWithDevTools(applyMiddleware(...middlewares)),
   );
 
+  // Run all saga middleware here
   store.sagaTask = sagaMiddleware.run(HomeSagas);
 
   return store;
