@@ -1,26 +1,28 @@
-const { PHASE_PRODUCTION_BUILD } = require('next-server/constants');
+const { PHASE_PRODUCTION_BUILD, PHASE_PRODUCTION_SERVER } = require('next-server/constants');
 const nextRuntimeDotenv = require('next-runtime-dotenv');
 const withPlugins = require('next-compose-plugins');
-
-const withSass = require('@zeit/next-sass')({
-  cssModules: true,
-  cssLoaderOptions: {
-    localIdentName: '[path]___[local]___[hash:base64:5]',
-  },
-  [PHASE_PRODUCTION_BUILD]: {
-    cssLoaderOptions: {
-      localIdentName: '[hash:base64:8]',
-    },
-  },
-});
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
+const withSass = require('@zeit/next-sass');
+const withBundleAnalyzer = require('@next/bundle-analyzer');
 
 const withConfig = nextRuntimeDotenv({
   server: ['BACKEND_ENDPOINT', 'PORT'],
 });
 
 module.exports = withConfig(
-  withPlugins([[withSass], [withBundleAnalyzer]], {}),
+  withPlugins([
+    [withSass, {
+      cssModules: true,
+      cssLoaderOptions: {
+        localIdentName: '[path][name]__[local]__[hash:base64:5]',
+      },
+      [PHASE_PRODUCTION_BUILD + PHASE_PRODUCTION_SERVER]: {
+        cssLoaderOptions: {
+          localIdentName: '[hash:base64]',
+        },
+      },
+    }],
+    [withBundleAnalyzer, {
+      enabled: process.env.ANALYZE === 'true',
+    }],
+  ]),
 );
