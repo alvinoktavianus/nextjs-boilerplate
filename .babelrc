@@ -16,7 +16,8 @@
           "@Redux": "./src/redux",
           "@Constants": "./src/constants",
           "@Sagas": "./src/sagas",
-          "@Http": "./src/http"
+          "@Http": "./src/http",
+          "@Routes": "./app/routes.js"
         }
       }
     ]

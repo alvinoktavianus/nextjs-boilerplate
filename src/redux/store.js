@@ -4,6 +4,7 @@ import { createLogger } from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 
 import HomeSagas from '@Sagas/homeSagas';
+import UserSagas from '@Sagas/userSagas';
 
 import rootReducer from '@Reducers';
 

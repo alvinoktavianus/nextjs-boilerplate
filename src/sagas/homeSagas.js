@@ -3,7 +3,7 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import * as actions from '@Actions/homeActions';
 import * as api from '@Http/api';
 
-export function* initialPageRequested() {
+export function* initialPageRequestedEffect() {
   try {
     const response = yield call(api.getSampleUsers);
 
@@ -14,5 +14,5 @@ export function* initialPageRequested() {
 }
 
 export default function* homePageSagas() {
-  yield takeLatest(actions.HOME_PAGE_INITIAL_PAGE_REQUESTED, initialPageRequested);
+  yield takeLatest(actions.HOME_PAGE_INITIAL_PAGE_REQUESTED, initialPageRequestedEffect);
 }

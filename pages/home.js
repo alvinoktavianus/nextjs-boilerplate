@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'next/link';
 import { connect } from 'react-redux';
 
 import CustomHeader from '@Components/CustomHeader';
 
 import * as actions from '@Actions/homeActions';
+
+import { Link } from '@Routes';
 
 class Home extends React.Component {
   static async getInitialProps({ store }) {
@@ -19,7 +20,7 @@ class Home extends React.Component {
   static renderUser(idx, user) {
     return (
       <li key={idx}>
-        <Link href={`/user?id=${user.id}`} as={`/user/${user.id}`}>
+        <Link route="userPage" params={{ id: user.id }}>
           <a>{`${user.first_name} ${user.last_name}`}</a>
         </Link>
       </li>

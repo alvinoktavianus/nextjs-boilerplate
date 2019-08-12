@@ -8,3 +8,9 @@ export function getSampleUsers() {
     .then(res => Promise.resolve(res))
     .catch(err => Promise.reject(err));
 }
+
+export function getSampleUserById(userId) {
+  return axios.get(`${BACKEND_ENDPOINT}/api/users/${userId}`)
+    .then(res => Promise.resolve(res))
+    .catch(err => Promise.reject(err));
+}
