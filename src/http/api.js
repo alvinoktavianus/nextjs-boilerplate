@@ -1,7 +1,11 @@
 import axios from 'axios';
 import getConfig from 'next/config';
 
-const { serverRuntimeConfig: { BACKEND_ENDPOINT } } = getConfig();
+const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
+
+const BACKEND_ENDPOINT = serverRuntimeConfig.BACKEND_ENDPOINT
+  ? serverRuntimeConfig.BACKEND_ENDPOINT
+  : publicRuntimeConfig.BACKEND_ENDPOINT;
 
 export function getSampleUsers() {
   return axios.get(`${BACKEND_ENDPOINT}/api/users?per_page=10`)

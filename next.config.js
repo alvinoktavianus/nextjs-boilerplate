@@ -6,6 +6,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer');
 
 const withConfig = nextRuntimeDotenv({
   server: ['BACKEND_ENDPOINT', 'PORT'],
+  public: ['BACKEND_ENDPOINT', 'PORT'],
 });
 
 module.exports = withConfig(

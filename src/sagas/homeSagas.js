@@ -1,8 +1,9 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put } from 'redux-saga/effects';
 
 import * as actions from '@Actions/homeActions';
 import * as api from '@Http/api';
 
+// eslint-disable-next-line import/prefer-default-export
 export function* initialPageRequestedEffect() {
   try {
     const response = yield call(api.getSampleUsers);
@@ -11,8 +12,4 @@ export function* initialPageRequestedEffect() {
   } catch (e) {
     console.log(e);
   }
-}
-
-export default function* homePageSagas() {
-  yield takeLatest(actions.HOME_PAGE_INITIAL_PAGE_REQUESTED, initialPageRequestedEffect);
 }
