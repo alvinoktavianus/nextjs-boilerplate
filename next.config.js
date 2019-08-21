@@ -3,6 +3,7 @@ const nextRuntimeDotenv = require('next-runtime-dotenv');
 const withPlugins = require('next-compose-plugins');
 const withSass = require('@zeit/next-sass');
 const withBundleAnalyzer = require('@next/bundle-analyzer');
+const withProgressBar = require('next-progressbar');
 
 const withConfig = nextRuntimeDotenv({
   server: ['BACKEND_ENDPOINT', 'PORT'],
@@ -24,6 +25,11 @@ module.exports = withConfig(
     }],
     [withBundleAnalyzer, {
       enabled: process.env.ANALYZE === 'true',
+    }],
+    [withProgressBar, {
+      progressBar: {
+        profile: true,
+      },
     }],
   ]),
 );
