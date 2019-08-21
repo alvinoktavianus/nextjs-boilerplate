@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { reduxForm, Field } from 'redux-form';
 
 import * as commonActions from '@Actions/commonActions';
 import * as actions from '@Actions/userActions';
+
+export const USER_FORM_NAME = 'userForm';
 
 class User extends React.Component {
   static async getInitialProps({ store, query, isServer }) {
@@ -20,7 +23,7 @@ class User extends React.Component {
 
   render() {
     const {
-      firstName, lastName, avatar, emailAddress, showLoadingPage,
+      firstName, lastName, avatar, showLoadingPage,
     } = this.props;
 
     if (showLoadingPage) {
@@ -33,9 +36,16 @@ class User extends React.Component {
 
     return (
       <React.Fragment>
-        <h1>{`${firstName} ${lastName}`}</h1>
-        <h4>{emailAddress}</h4>
-        <img src={avatar} alt={`${firstName} ${lastName}`} />
+        <form>
+          <h1>{`${firstName} ${lastName}`}</h1>
+          <Field
+            component="input"
+            type="email"
+            name="emailAddress"
+          />
+          <br />
+          <img src={avatar} alt={`${firstName} ${lastName}`} />
+        </form>
       </React.Fragment>
     );
   }
@@ -52,12 +62,15 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(User);
+const mapForm = {
+  form: USER_FORM_NAME,
+};
+
+export default connect(mapStateToProps)(reduxForm(mapForm)(User));
 
 User.propTypes = {
   firstName: PropTypes.string,
   lastName: PropTypes.string,
   avatar: PropTypes.string,
-  emailAddress: PropTypes.string,
   showLoadingPage: PropTypes.bool,
 };
