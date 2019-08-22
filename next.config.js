@@ -26,10 +26,6 @@ module.exports = withConfig(
     [withBundleAnalyzer, {
       enabled: process.env.ANALYZE === 'true',
     }],
-    [withProgressBar, {
-      progressBar: {
-        profile: true,
-      },
-    }],
+    [withProgressBar, {}],
   ]),
 );
