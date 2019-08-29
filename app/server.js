@@ -2,6 +2,7 @@
 const express = require('express');
 const next = require('next');
 const path = require('path');
+const pino = require('express-pino-logger');
 const routes = require('./routes');
 
 const serverPort = process.env.PORT || 3010;
@@ -13,8 +14,11 @@ app
   .prepare()
   .then(() => {
     const server = express();
+    const pinoLogger = pino();
+
     app.setAssetPrefix(process.env.STATIC_PATH);
     server.use(express.static(path.join(__dirname, '../static')));
+    server.use(pinoLogger);
 
     server.get('*', (req, res) => handle(req, res));
 
