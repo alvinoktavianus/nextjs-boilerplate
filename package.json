@@ -19,7 +19,7 @@
     "express-pino-logger": "^4.0.0",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
-    "next": "^9.0.3",
+    "next": "^9.3.2",
     "next-compose-plugins": "^2.2.0",
     "next-progressbar": "^1.0.0",
     "next-redux-saga": "^4.0.2",
